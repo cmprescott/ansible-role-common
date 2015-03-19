@@ -1,0 +1,16 @@
+---
+# Darwin (Mac OS X) tasks file for ansible-role-common
+
+# -------------
+# Install and configure terminal applications
+# -------------
+- name: Darwin | ensure terminal applications present
+  sudo: No
+  homebrew:
+    name: "{{ item }}"
+    state: present
+    update_homebrew: no 
+    upgrade_all: no 
+  with_items:
+   - "{{ common_packages_terminal }}"
+

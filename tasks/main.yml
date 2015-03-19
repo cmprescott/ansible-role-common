@@ -1,2 +1,12 @@
 ---
 # tasks file for ansible-role-common
+
+# -------------
+# Platform conditional install and configuration
+# -------------
+- include: setup-Darwin.yml
+  when:  ansible_os_family == 'Darwin'
+
+- include: setup-Debian.yml
+  when:  ansible_os_family == 'Debian'
+

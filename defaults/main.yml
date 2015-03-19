@@ -1,2 +1,8 @@
 ---
 # defaults file for ansible-role-common
+
+common_packages_terminal:
+  - bash
+  - byobu
+  - tree
+  - vim
