@@ -1,19 +1,32 @@
 ---
 # defaults file for ansible-role-common
 
-common_packages_file:
-  - unzip
-  - unrar
-  
-common_packages_network:
-  - curl
-  - wget
-  - netcat
+# -------------
+# bash
+# -------------
+common_bash_aliases:
+  - "ll='ls -alF'"
+  - "la='ls -A'"
+  - "l='ls -CF'"
+  - "vi='vim'"
 
-common_packages_terminal:
-  - bash
-  - byobu
-  - locate
-  - sudo
-  - tree
-  - vim
+# -------------
+# byobu
+# -------------
+common_byobu_widgets_left:
+  - logo
+  - release
+  - session
+common_byobu_widgets_right:
+  - reboot_required
+  - updates_available
+  - uptime
+  - cpu_temp
+  - load_average
+  - cpu_count
+  - cpu_freq
+  - memory
+  - disk
+  - date
+  - time
+common_byobu_windows: []  
