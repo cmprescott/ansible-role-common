@@ -1,8 +1,19 @@
 ---
 # defaults file for ansible-role-common
 
+common_packages_file:
+  - unzip
+  - unrar
+  
+common_packages_network:
+  - curl
+  - wget
+  - netcat
+
 common_packages_terminal:
   - bash
   - byobu
+  - locate
+  - sudo
   - tree
   - vim
