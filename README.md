@@ -1,7 +1,23 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Installs and configures the following common applications on Debian/Ubuntu & OS X.
+
+- **File**
+  - unzip
+  - unrar
+- **Networking**  
+  - curl
+  - git
+  - netcat
+  - wget
+- **Terminal**
+  - bash
+  - byobu
+  - locate
+  - sudo
+  - tree
+  - vim
 
 Requirements
 ------------
@@ -11,21 +27,56 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```yaml
+# -------------
+# bash
+# -------------
+common_bash_aliases:
+  - "alias ll='ls -alF'"
+  - "alias la='ls -A'"
+  - "alias l='ls -CF'"
+  - "alias vi='vim'"
+# -------------
+# byobu
+# -------------
+common_byobu_widgets_left:
+  - logo
+  - release
+  - session
+common_byobu_widgets_right:
+  - reboot_required
+  - updates_available
+  - uptime
+  - cpu_temp
+  - load_average
+  - cpu_count
+  - cpu_freq
+  - memory
+  - disk
+  - date
+  - time
+common_byobu_windows: []
+# -------------
+# platform dependent
+# -------------
+__common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
+__common_byobu_bin: /usr/bin/byobu-launch
+
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: username.rolename, x: 42 }
+         - role: common
 
 License
 -------
@@ -35,4 +86,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Prescott Chris
