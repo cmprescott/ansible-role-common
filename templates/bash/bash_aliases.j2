@@ -1,0 +1,5 @@
+#{{ ansible_managed }}
+#
+{% for v in common_bash_aliases %}
+alias {{ v }}
+{% endfor %}
