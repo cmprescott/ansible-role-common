@@ -1,0 +1,18 @@
+---
+# file: vars/Darwin.yml
+
+__common_packages:
+#   unzip
+  - unrar
+#   curl
+  - git
+  - netcat
+  - wget
+  - bash
+  - byobu
+#   locate
+#   sudo
+  - tree
+  - vim
+
+__common_byobu_bin: /usr/local/bin/byobu-launch

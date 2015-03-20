@@ -2,7 +2,7 @@
 # Debian (Linux) tasks file for ansible-role-common
 
 # -------------
-# Install and configure terminal applications
+# Install and configure common packages
 # -------------
 - name: Debian | ensure common packages present
   sudo: Yes
@@ -12,6 +12,4 @@
     update_cache: Yes
     cache_valid_time: 86400
   with_items:
-    - "{{ common_packages_file }}"
-    - "{{ common_packages_network }}"
-    - "{{ common_packages_terminal }}"
+    - "{{ __common_packages }}"
