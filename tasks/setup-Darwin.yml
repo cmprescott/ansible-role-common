@@ -2,15 +2,25 @@
 # Darwin (Mac OS X) tasks file for ansible-role-common
 
 # -------------
-# Install and configure terminal applications
+# Install and configure packages
 # -------------
-- name: Darwin | ensure terminal applications present
+# Homebrew likes to throw errors when you try to install things that already exist
+# So check /usr/bin for packages first
+- name: Darwin | check OS for common packages
+  stat: path=/usr/bin/"{{ item }}"
+  with_items:
+    - "{{ common_packages_file }}"
+    - "{{ common_packages_network }}"
+    - "{{ common_packages_terminal }}"
+  register: packages
+
+# Only install packages not provided by the OS
+- name: Darwin | ensure non-OS common packages present
   sudo: No
   homebrew:
-    name: "{{ item }}"
+    name: "{{ item.item }}"
     state: present
     update_homebrew: no 
-    upgrade_all: no 
-  with_items:
-   - "{{ common_packages_terminal }}"
-
+    upgrade_all: no
+  when: not item.stat.exists
+  with_items: packages.results
