@@ -15,4 +15,4 @@ __common_packages:
   - tree
   - vim
 
-__common_byobu_bin: /usr/bin/byobu-launch
+__common_package: /usr
