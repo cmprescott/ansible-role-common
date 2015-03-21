@@ -9,6 +9,9 @@ common_bash_aliases:
   - "la='ls -A'"
   - "l='ls -CF'"
   - "vi='vim'"
+  - "grep='grep --color=auto'"
+  - "fgrep='fgrep --color=auto'"
+  - "egrep='egrep --color=auto'"
 
 # -------------
 # byobu
