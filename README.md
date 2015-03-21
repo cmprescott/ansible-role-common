@@ -1,28 +1,29 @@
 Role Name
 =========
 
-Installs and configures the following common applications on Debian/Ubuntu & OS X.
+Installs and configures the following common applications on Debian/Ubuntu & OS X. This is a living project. I tend to add things as I need them on my computers.
 
 - **File**
   - unzip
   - unrar
 - **Networking**  
   - curl
-  - git
   - netcat
   - wget
+- **Programming**
+  - git
+  - vim
 - **Terminal**
   - bash
   - byobu
   - locate
   - sudo
   - tree
-  - vim
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
 
 Role Variables
 --------------
@@ -32,10 +33,13 @@ Role Variables
 # bash
 # -------------
 common_bash_aliases:
-  - "alias ll='ls -alF'"
-  - "alias la='ls -A'"
-  - "alias l='ls -CF'"
-  - "alias vi='vim'"
+  - "ll='ls -alF'"
+  - "la='ls -A'"
+  - "l='ls -CF'"
+  - "vi='vim'"
+  - "grep='grep --color=auto'"
+  - "fgrep='fgrep --color=auto'"
+  - "egrep='egrep --color=auto'"
 # -------------
 # byobu
 # -------------
@@ -60,7 +64,7 @@ common_byobu_windows: []
 # platform dependent
 # -------------
 __common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
-__common_byobu_bin: /usr/bin/byobu-launch
+__common_package: (/usr/ | /usr/local/ depending on platform)
 
 ```
 
@@ -71,8 +75,6 @@ None
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: all
       roles:
