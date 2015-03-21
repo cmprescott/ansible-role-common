@@ -64,7 +64,7 @@ common_byobu_windows: []
 # platform dependent
 # -------------
 __common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
-__common_package: (/usr/ | /usr/local/ depending on platform)
+__common_package_path: (/usr/ | /usr/local/ depending on platform)
 
 ```
 
