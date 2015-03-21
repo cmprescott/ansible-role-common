@@ -45,7 +45,7 @@
 # -------------
 # Configure vim
 # -------------
-- name: All | bash | ensure ~/.vimrc
+- name: All | vim | ensure ~/.vimrc
   copy:
     src: vimrc
     dest: ~/.vimrc
