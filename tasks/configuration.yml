@@ -41,3 +41,11 @@
   template:
     src: byobu/tmux.conf.j2
     dest: ~/.byobu/.tmux.conf
+
+# -------------
+# Configure vim
+# -------------
+- name: All | bash | ensure ~/.vimrc
+  copy:
+    src: vimrc
+    dest: ~/.vimrc
