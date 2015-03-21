@@ -35,7 +35,7 @@
 - name: All | byobu | ensure ~/.byobu/status
   template:
     src: byobu/status.j2
-    dest: ~/.byobu/status
+    dest: "{{ __common_package_path }}/share/byobu/status/status"
     
 - name: All | byobu | ensure ~/.byobu/.tmux.conf
   template:
