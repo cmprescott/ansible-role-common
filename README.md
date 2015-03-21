@@ -1,4 +1,4 @@
-Role Name
+Ansible Role: Common
 =========
 
 Installs and configures the following common applications on Debian/Ubuntu & OS X. This is a living project. I tend to add things as I need them on my computers.
