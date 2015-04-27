@@ -29,9 +29,7 @@ Role Variables
 --------------
 
 ```yaml
-# -------------
-# bash
-# -------------
+# ----- bash -----
 common_bash_aliases:
   - "ll='ls -alF'"
   - "la='ls -A'"
@@ -40,29 +38,13 @@ common_bash_aliases:
   - "grep='grep --color=auto'"
   - "fgrep='fgrep --color=auto'"
   - "egrep='egrep --color=auto'"
-# -------------
-# byobu
-# -------------
-common_byobu_widgets_left:
-  - logo
-  - release
-  - session
-common_byobu_widgets_right:
-  - reboot_required
-  - updates_available
-  - uptime
-  - cpu_temp
-  - load_average
-  - cpu_count
-  - cpu_freq
-  - memory
-  - disk
-  - date
-  - time
+
+# ----- byobu -----
+common_byobu_widgets_left: [ logo, release, session  ]
+common_byobu_widgets_right: [ reboot_required, updates_available, uptime, cpu_temp, load_average, cpu_count, cpu_freq, memory, disk, date, time ]
 common_byobu_windows: []
-# -------------
-# platform dependent
-# -------------
+
+# ----- platform dependent -----
 __common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
 __common_package_path: (/usr/ | /usr/local/ depending on platform)
 
