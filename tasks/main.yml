@@ -2,15 +2,21 @@
 # tasks file for ansible-role-common
 
 # -------------
-# Platform conditional install and configuration
+# Variables
 # -------------
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
+# -------------
+# Setup
+# -------------
 - include: setup-Darwin.yml
   when:  ansible_os_family == 'Darwin'
 
 - include: setup-Debian.yml
   when:  ansible_os_family == 'Debian'
 
+# -------------
+# Configuration
+# -------------
 - include: configuration.yml
