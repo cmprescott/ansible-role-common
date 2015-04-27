@@ -4,7 +4,7 @@
 # -------------
 # Variables
 # -------------
-- name: Include OS system variables.
+- name: main   |  incl | include OS system variables.
   include_vars: "{{ ansible_system }}.yml"
 
 # -------------
