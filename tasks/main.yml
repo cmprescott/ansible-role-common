@@ -19,4 +19,8 @@
 # -------------
 # Configuration
 # -------------
-- include: configuration.yml
+- include: config-bash.yml
+
+- include: config-byobu.yml
+
+- include: config-vim.yml
