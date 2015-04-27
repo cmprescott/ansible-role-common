@@ -1,0 +1,27 @@
+---
+# All configuration tasks file for ansible-role-common
+
+- name: All | bash | ensure ~/.bash_profile
+  template:
+    src: bash/bash_profile.j2
+    dest: ~/.bash_profile
+    
+- name: All | bash | ensure ~/.bashrc
+  template:
+    src: bash/bashrc.j2
+    dest: ~/.bashrc
+
+- name: All | bash | ensure ~/.bash_aliases
+  template:
+    src: bash/bash_aliases.j2
+    dest: ~/.bash_aliases
+
+- name: All | bash | ensure no ~/.profile
+  file:
+    path: ~/.profile
+    state: absent
+
+- name: All | bash | ensure ~/.dircolors
+  copy:
+    src: dircolors
+    dest: ~/.dircolors
