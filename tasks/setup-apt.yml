@@ -4,7 +4,7 @@
 # -------------
 # Install and configure common packages
 # -------------
-- name: Debian | ensure common packages present
+- name: setup  |   apt | ensure common packages present
   sudo: Yes
   apt:
     name: "{{ item }}"

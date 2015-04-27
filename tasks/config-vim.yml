@@ -1,7 +1,7 @@
 ---
 # All configuration tasks file for ansible-role-common
 
-- name: All | vim | ensure ~/.vimrc
+- name: config |   vim | ensure ~/.vimrc
   copy:
     src: vimrc
     dest: ~/.vimrc

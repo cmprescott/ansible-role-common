@@ -4,7 +4,7 @@
 # -------------
 # Install and configure common packages
 # -------------
-- name: Darwin | ensure non-OS common packages present
+- name: setup  |  brew | ensure non-OS common packages present
   sudo: No
   homebrew:
     name: "{{ item }}"

@@ -1,5 +1,5 @@
 ---
-# file: vars/Debian.yml
+# file: vars/Linux.yml
 
 __common_packages:
   - unzip
