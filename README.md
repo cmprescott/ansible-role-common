@@ -1,7 +1,7 @@
 Ansible Role: Common
 =========
 
-Installs and configures the following common applications on Debian/Ubuntu & OS X. This is a living project. I tend to add things as I need them on my computers.
+Installs and configures the following common applications on Debian, Elementary OS, Ubuntu, & OS X. This is a living project. I tend to add things as I need them on my computers.
 
 - **File**
   - unzip
@@ -60,7 +60,7 @@ Example Playbook
 
     - hosts: all
       roles:
-         - role: common
+         - role: cmprescott.common
 
 License
 -------
