@@ -1,7 +1,7 @@
 ---
 # All configuration tasks file for ansible-role-common
 
-- name: config | byobu | ensure ~/.byobu/status
+- name: config | byobu | ensure .../share/byobu/status/status
   sudo: Yes
   template:
     src: byobu/status.j2
