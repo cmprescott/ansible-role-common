@@ -75,7 +75,7 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-{% if ansible_os_family == 'Debian' %}
+{% if ansible_system == 'Linux' %}
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -83,7 +83,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias vdir='vdir --color=auto'
 fi
 {% endif %}
-{% if ansible_os_family == 'Darwin' %}
+{% if ansible_system == 'Darwin' %}
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
