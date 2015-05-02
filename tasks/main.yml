@@ -10,10 +10,15 @@
 # -------------
 # Setup
 # -------------
-- include: setup-brew.yml
+- name: setup  |  brew | ensure non-OS common packages present
+  homebrew: name="{{ item }}"
+  with_items: __common_packages
   when:  ansible_system == 'Darwin'
 
-- include: setup-apt.yml
+- name: setup  |   apt | ensure common packages present
+  sudo: Yes
+  apt: name="{{ item }}" update_cache=Yes cache_valid_time=86400
+  with_items: __common_packages
   when:  ansible_pkg_mgr == 'apt'
 
 # -------------
