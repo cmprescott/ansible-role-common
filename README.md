@@ -16,12 +16,14 @@ Requirements
 # Ansible version 1.8.4+
 ansible --version
 
-# Linux needs apt, OS X needs homebrew cask
+# OS
 case $OSTYPE in
+  # Linux needs apt
   "linux"*)
       apt --version;;
+  # OS X needs homebrew
   "darwin"*)
-      brew cask --version;;
+      brew --version;;
 esac
 ```
 
@@ -43,10 +45,6 @@ common_bash_aliases:
 common_byobu_widgets_left: [ logo, release, session  ]
 common_byobu_widgets_right: [ reboot_required, updates_available, uptime, cpu_temp, load_average, cpu_count, cpu_freq, memory, disk, date, time ]
 common_byobu_windows: []
-
-# ----- platform dependent -----
-__common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
-__common_package_path: (/usr/ | /usr/local/ depending on platform)
 ```
 
 Dependencies
