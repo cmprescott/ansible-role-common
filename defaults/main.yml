@@ -1,9 +1,7 @@
 ---
 # defaults file for ansible-role-common
 
-# -------------
-# bash
-# -------------
+# ----- bash -----
 common_bash_aliases:
   - "ll='ls -alF'"
   - "la='ls -A'"
@@ -13,9 +11,7 @@ common_bash_aliases:
   - "fgrep='fgrep --color=auto'"
   - "egrep='egrep --color=auto'"
 
-# -------------
-# byobu
-# -------------
+# ----- byobu -----
 common_byobu_widgets_left:
   - logo
   - release
@@ -33,3 +29,5 @@ common_byobu_widgets_right:
   - date
   - time
 common_byobu_windows: []  
+
+...
