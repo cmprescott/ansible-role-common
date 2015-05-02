@@ -39,6 +39,7 @@
 
 - name: config |  bash | ensure ~/.dircolors
   copy: src=dircolors dest=~/.dircolors
+  when: ansible_os_family == 'Debian'
 
 
 - name: config | byobu | ensure $INSTALL/share/byobu/status/status"
