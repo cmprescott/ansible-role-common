@@ -13,7 +13,7 @@ Requirements
 ------------
 
 ```shell
-# Ansible version 1.4.4+
+# Ansible version 1.8.4+
 ansible --version
 
 # Linux needs apt, OS X needs homebrew cask

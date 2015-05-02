@@ -1,22 +1,18 @@
 ---
 # tasks file for ansible-role-common
 
-# ----- Variables -----
-- name: "main   |  incl | include OS system variables."
-  include_vars: "{{ ansible_system }}.yml"
-
 
 # ----- Setup -----
 - name: "setup  |  brew | ensure non-OS common packages present"
   homebrew: name="{{ item }}"
-  with_items: __common_packages
+  with_items: [ 'unrar', 'git', 'netcat', 'wget', 'bash', 'byobu', 'tree', 'vim' ]
   when:  ansible_system == 'Darwin'
 
 
 - name: "setup  |   apt | ensure common packages present"
   sudo: Yes
   apt: name="{{ item }}" update_cache=Yes cache_valid_time=86400
-  with_items: __common_packages
+  with_items: [ 'unzip', 'unrar', 'curl', 'git', 'netcat', 'wget', 'bash', 'byobu', 'locate', 'sudo', 'tree', 'vim' ]
   when:  ansible_pkg_mgr == 'apt'
 
 
@@ -44,7 +40,10 @@
 
 - name: "config | byobu | ensure $INSTALL/share/byobu/status/status templated"
   sudo: Yes
-  template: src=byobu/status.j2 dest="{{ __common_package_path }}/share/byobu/status/status"
+  template: src=byobu/status.j2 dest="{{ item }}"
+  with_first_found:
+    - "/usr/share/byobu/status/status"
+    - "/usr/local/share/byobu/status/status"
 
 
 - name: "config | byobu | ensure ~/.byobu/"

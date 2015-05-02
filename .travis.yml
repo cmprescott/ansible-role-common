@@ -3,9 +3,9 @@ language: python
 python: "2.7"
 before_install:
  - sudo apt-get update -qq
- - sudo apt-get install -qq python-apt python-pycurl ansible
-#install:
-#  - pip install ansible==1.8.4
+ - sudo apt-get install -qq python-apt python-pycurl
+install:
+  - pip install ansible==1.8.4
 script:
   - ansible --version
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check --list-tasks
