@@ -11,7 +11,18 @@ Installs and configures the following common applications on Debian, Elementary 
 Requirements
 ------------
 
-None.
+```shell
+# Ansible version 1.4.4+
+ansible --version
+
+# Linux needs apt, OS X needs homebrew cask
+case $OSTYPE in
+  "linux"*)
+      apt --version;;
+  "darwin"*)
+      brew cask --version;;
+esac
+```
 
 Role Variables
 --------------
