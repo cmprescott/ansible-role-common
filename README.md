@@ -1,5 +1,6 @@
 Ansible Role: Common
 =========
+[![Build Status](https://travis-ci.org/cmprescott/ansible-role-common.svg?branch=master)](https://travis-ci.org/cmprescott/ansible-role-common)
 
 Installs and configures the following common applications on Debian, Elementary OS, Ubuntu, & OS X. This is a living project. I tend to add things as I need them on my computers.
 
