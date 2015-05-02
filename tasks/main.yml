@@ -24,8 +24,29 @@
 # -------------
 # Configuration
 # -------------
-- include: config-bash.yml
+- name: config |  bash | ensure ~/.bash_profile
+  template: src=bash/bash_profile.j2 dest=~/.bash_profile
+    
+- name: config |  bash | ensure ~/.bashrc
+  template: src=bash/bashrc.j2 dest=~/.bashrc
 
-- include: config-byobu.yml
+- name: config |  bash | ensure ~/.bash_aliases
+  template: src=bash/bash_aliases.j2 dest=~/.bash_aliases
 
-- include: config-vim.yml
+- name: config |  bash | ensure no ~/.profile
+  file: path=~/.profile state=absent
+
+- name: config |  bash | ensure ~/.dircolors
+  copy: src=dircolors dest=~/.dircolors
+
+- name: config | byobu | ensure ~/.byobu/status
+  sudo: Yes
+  template: src=byobu/status.j2 dest="{{ __common_package_path }}/share/byobu/status/status"
+    
+- name: config | byobu | ensure ~/.byobu/.tmux.conf
+  template: src=byobu/tmux.conf.j2 dest=~/.byobu/.tmux.conf
+
+- name: config |   vim | ensure ~/.vimrc
+  copy: src=vimrc dest=~/.vimrc
+
+...
