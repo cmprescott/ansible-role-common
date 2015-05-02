@@ -47,20 +47,21 @@ common_byobu_windows: []
 # ----- platform dependent -----
 __common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
 __common_package_path: (/usr/ | /usr/local/ depending on platform)
-
 ```
 
 Dependencies
 ------------
 
-None
+None.
 
 Example Playbook
 ----------------
 
-    - hosts: all
-      roles:
-         - role: cmprescott.common
+```yaml
+- hosts: all
+  roles:
+     - role: cmprescott.common
+```
 
 License
 -------
