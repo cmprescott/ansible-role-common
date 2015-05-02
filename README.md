@@ -3,22 +3,10 @@ Ansible Role: Common
 
 Installs and configures the following common applications on Debian, Elementary OS, Ubuntu, & OS X. This is a living project. I tend to add things as I need them on my computers.
 
-- **File**
-  - unzip
-  - unrar
-- **Networking**  
-  - curl
-  - netcat
-  - wget
-- **Programming**
-  - git
-  - vim
-- **Terminal**
-  - bash
-  - byobu
-  - locate
-  - sudo
-  - tree
+- **File**: `unzip`, `unrar`
+- **Networking**: `curl`, `netcat`, `wget`  
+- **Programming**: `git`, `vim`
+- **Terminal**: `bash`, `byobu`, `locate`, `sudo`, `tree`
 
 Requirements
 ------------
