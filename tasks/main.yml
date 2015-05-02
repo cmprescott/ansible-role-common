@@ -2,18 +2,18 @@
 # tasks file for ansible-role-common
 
 # ----- Variables -----
-- name: main   |  incl | include OS system variables.
+- name: "main   |  incl | include OS system variables."
   include_vars: "{{ ansible_system }}.yml"
 
 
 # ----- Setup -----
-- name: setup  |  brew | ensure non-OS common packages present
+- name: "setup  |  brew | ensure non-OS common packages present"
   homebrew: name="{{ item }}"
   with_items: __common_packages
   when:  ansible_system == 'Darwin'
 
 
-- name: setup  |   apt | ensure common packages present
+- name: "setup  |   apt | ensure common packages present"
   sudo: Yes
   apt: name="{{ item }}" update_cache=Yes cache_valid_time=86400
   with_items: __common_packages
@@ -21,41 +21,41 @@
 
 
 # ----- Configuration -----
-- name: config |  bash | ensure ~/.bash_profile
+- name: "config |  bash | ensure ~/.bash_profile templated"
   template: src=bash/bash_profile.j2 dest=~/.bash_profile
 
     
-- name: config |  bash | ensure ~/.bashrc
+- name: "config |  bash | ensure ~/.bashrc templated"
   template: src=bash/bashrc.j2 dest=~/.bashrc
 
 
-- name: config |  bash | ensure ~/.bash_aliases
+- name: "config |  bash | ensure ~/.bash_aliases templated"
   template: src=bash/bash_aliases.j2 dest=~/.bash_aliases
 
 
-- name: config |  bash | ensure no ~/.profile
+- name: "config |  bash | ensure no ~/.profile"
   file: path=~/.profile state=absent
 
 
-- name: config |  bash | ensure ~/.dircolors
+- name: "config |  bash | ensure my ~/.dircolors"
   copy: src=dircolors dest=~/.dircolors
   when: ansible_os_family == 'Debian'
 
 
-- name: config | byobu | ensure $INSTALL/share/byobu/status/status"
+- name: "config | byobu | ensure $INSTALL/share/byobu/status/status templated"
   sudo: Yes
   template: src=byobu/status.j2 dest="{{ __common_package_path }}/share/byobu/status/status"
 
 
-- name: config | byobu | ensure ~/.byobu
+- name: "config | byobu | ensure ~/.byobu/"
   file: path=~/.byobu/ state=directory
 
 
-- name: config | byobu | ensure ~/.byobu/.tmux.conf
+- name: "config | byobu | ensure ~/.byobu/.tmux.conf templated"
   template: src=byobu/tmux.conf.j2 dest=~/.byobu/.tmux.conf
 
 
-- name: config |   vim | ensure ~/.vimrc
+- name: "config |   vim | ensure my ~/.vimrc"
   copy: src=vimrc dest=~/.vimrc
 
 ...
