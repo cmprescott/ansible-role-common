@@ -1,19 +1,17 @@
 ---
 # tasks file for ansible-role-common
 
-# -------------
-# Variables
-# -------------
+# ----- Variables -----
 - name: main   |  incl | include OS system variables.
   include_vars: "{{ ansible_system }}.yml"
 
-# -------------
-# Setup
-# -------------
+
+# ----- Setup -----
 - name: setup  |  brew | ensure non-OS common packages present
   homebrew: name="{{ item }}"
   with_items: __common_packages
   when:  ansible_system == 'Darwin'
+
 
 - name: setup  |   apt | ensure common packages present
   sudo: Yes
@@ -21,30 +19,36 @@
   with_items: __common_packages
   when:  ansible_pkg_mgr == 'apt'
 
-# -------------
-# Configuration
-# -------------
+
+# ----- Configuration -----
 - name: config |  bash | ensure ~/.bash_profile
   template: src=bash/bash_profile.j2 dest=~/.bash_profile
+
     
 - name: config |  bash | ensure ~/.bashrc
   template: src=bash/bashrc.j2 dest=~/.bashrc
 
+
 - name: config |  bash | ensure ~/.bash_aliases
   template: src=bash/bash_aliases.j2 dest=~/.bash_aliases
+
 
 - name: config |  bash | ensure no ~/.profile
   file: path=~/.profile state=absent
 
+
 - name: config |  bash | ensure ~/.dircolors
   copy: src=dircolors dest=~/.dircolors
+
 
 - name: config | byobu | ensure ~/.byobu/status
   sudo: Yes
   template: src=byobu/status.j2 dest="{{ __common_package_path }}/share/byobu/status/status"
-    
+
+
 - name: config | byobu | ensure ~/.byobu/.tmux.conf
   template: src=byobu/tmux.conf.j2 dest=~/.byobu/.tmux.conf
+
 
 - name: config |   vim | ensure ~/.vimrc
   copy: src=vimrc dest=~/.vimrc
