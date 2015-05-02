@@ -22,4 +22,4 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-_byobu_sourced=1 . {{ __common_package_path }}/bin/byobu
+_byobu_sourced=1 . {% if ansible_system == 'Darwin' %}usr/local/bin/byobu{% else %}/usr/bin/byobu{% endif %}

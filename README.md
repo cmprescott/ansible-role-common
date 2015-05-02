@@ -1,29 +1,29 @@
 Ansible Role: Common
 =========
+[![Build Status](https://travis-ci.org/cmprescott/ansible-role-common.svg?branch=master)](https://travis-ci.org/cmprescott/ansible-role-common)
 
 Installs and configures the following common applications on Debian, Elementary OS, Ubuntu, & OS X. This is a living project. I tend to add things as I need them on my computers.
 
-- **File**
-  - unzip
-  - unrar
-- **Networking**  
-  - curl
-  - netcat
-  - wget
-- **Programming**
-  - git
-  - vim
-- **Terminal**
-  - bash
-  - byobu
-  - locate
-  - sudo
-  - tree
+- **File**: `unzip`, `unrar`
+- **Networking**: `curl`, `netcat`, `wget`  
+- **Programming**: `git`, `vim`
+- **Terminal**: `bash`, `byobu`, `locate`, `sudo`, `tree`
 
 Requirements
 ------------
 
-None.
+```shell
+# Ansible version 1.8.4+
+ansible --version
+
+# Linux needs apt, OS X needs homebrew cask
+case $OSTYPE in
+  "linux"*)
+      apt --version;;
+  "darwin"*)
+      brew cask --version;;
+esac
+```
 
 Role Variables
 --------------
@@ -47,20 +47,21 @@ common_byobu_windows: []
 # ----- platform dependent -----
 __common_packages: [ unzip, unrar, curl, git, netcat, wget, bash, byobu, locate, sudo, tree, vim ]
 __common_package_path: (/usr/ | /usr/local/ depending on platform)
-
 ```
 
 Dependencies
 ------------
 
-None
+None.
 
 Example Playbook
 ----------------
 
-    - hosts: all
-      roles:
-         - role: cmprescott.common
+```yaml
+- hosts: all
+  roles:
+     - role: cmprescott.common
+```
 
 License
 -------
