@@ -2,7 +2,6 @@
 # tasks file for ansible-role-common
 
 
-# ----- Setup -----
 - name: "setup  |  brew | ensure non-OS common packages present"
   homebrew: name="{{ item }}"
   with_items: [ 'unrar', 'git', 'netcat', 'wget', 'bash', 'byobu', 'tree', 'vim' ]
@@ -16,7 +15,6 @@
   when:  ansible_pkg_mgr == 'apt'
 
 
-# ----- Configuration -----
 - name: "config |  bash | ensure ~/.bash_profile templated"
   template: src=bash/bash_profile.j2 dest=~/.bash_profile
 
@@ -53,5 +51,6 @@
 
 - name: "config |   vim | ensure my ~/.vimrc"
   copy: src=vimrc dest=~/.vimrc
+
 
 ...
