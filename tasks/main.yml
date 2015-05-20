@@ -2,7 +2,6 @@
 # tasks file for ansible-role-common
 
 
-# ----- Setup -----
 - name: "setup  |  brew | ensure non-OS common packages present"
   homebrew: name="{{ item }}"
   with_items: [ 'unrar', 'git', 'netcat', 'wget', 'bash', 'byobu', 'tree', 'vim' ]
@@ -16,7 +15,6 @@
   when:  ansible_pkg_mgr == 'apt'
 
 
-# ----- Configuration -----
 - name: "config |  bash | ensure ~/.bash_profile templated"
   template: src=bash/bash_profile.j2 dest=~/.bash_profile
 
@@ -38,12 +36,9 @@
   when: ansible_os_family == 'Debian'
 
 
-- name: "config | byobu | ensure $INSTALL/share/byobu/status/status templated"
+- name: "config | byobu | ensure .../share/byobu/status/status templated"
   sudo: Yes
-  template: src=byobu/status.j2 dest="{{ item }}"
-  with_first_found:
-    - "/usr/share/byobu/status/status"
-    - "/usr/local/share/byobu/status/status"
+  template: src=byobu/status.j2 dest="{{ common_byobu_path_status[ansible_system] }}"
 
 
 - name: "config | byobu | ensure ~/.byobu/"
@@ -56,5 +51,6 @@
 
 - name: "config |   vim | ensure my ~/.vimrc"
   copy: src=vimrc dest=~/.vimrc
+
 
 ...
