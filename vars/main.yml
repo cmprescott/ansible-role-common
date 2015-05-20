@@ -1,0 +1,8 @@
+---
+# vars file for ansible-role-common
+
+common_byobu_path_status: 
+  Darwin: /usr/local/share/byobu/status/status
+  Linux: /usr/share/byobu/status/status
+
+...

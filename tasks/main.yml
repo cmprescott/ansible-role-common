@@ -36,9 +36,9 @@
   when: ansible_os_family == 'Debian'
 
 
-- name: "config | byobu | ensure $INSTALL/share/byobu/status/status templated"
+- name: "config | byobu | ensure .../share/byobu/status/status templated"
   sudo: Yes
-  template: src=byobu/status.j2 dest="{% if ansible_system == 'Darwin' %}usr/local/{% else %}/usr/{% endif %}share/byobu/status"
+  template: src=byobu/status.j2 dest="{{ common_byobu_path_status[ansible_system] }}"
 
 
 - name: "config | byobu | ensure ~/.byobu/"
