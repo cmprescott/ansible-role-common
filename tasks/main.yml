@@ -18,7 +18,7 @@
 - name: "config |  bash | ensure ~/.bash_profile templated"
   template: src=bash/bash_profile.j2 dest=~/.bash_profile
 
-    
+
 - name: "config |  bash | ensure ~/.bashrc templated"
   template: src=bash/bashrc.j2 dest=~/.bashrc
 

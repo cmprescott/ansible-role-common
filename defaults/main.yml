@@ -28,6 +28,6 @@ common_byobu_widgets_right:
   - disk
   - date
   - time
-common_byobu_windows: []  
+common_byobu_windows: []
 
 ...
