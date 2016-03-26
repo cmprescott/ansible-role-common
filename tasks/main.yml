@@ -14,6 +14,12 @@
   with_items: [ 'unzip', 'unrar', 'curl', 'git', 'netcat', 'wget', 'bash', 'byobu', 'locate', 'sudo', 'tree', 'vim' ]
   when:  ansible_pkg_mgr == 'apt'
 
+- name: "setup  |   pkg | ensure common packages present"
+  sudo: Yes
+  pkgng: name="{{ item }}" state=present
+  with_items: [ 'unzip', 'unrar', 'curl', 'git', 'wget', 'bash', 'byobu', 'tree', 'vim-lite' ]
+  when: ansible_pkg_mgr == 'pkgng'
+
 
 - name: "config |  bash | ensure ~/.bash_profile templated"
   template: src=bash/bash_profile.j2 dest=~/.bash_profile

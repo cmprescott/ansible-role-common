@@ -24,6 +24,9 @@ case $OSTYPE in
   # OS X needs homebrew
   "darwin"*)
       brew --version;;
+  # FreeBSD needs 9+ pkgng
+  "freebsd"*)
+      pkg --version;;      
 esac
 ```
 
