@@ -4,28 +4,21 @@ galaxy_info:
   description: Installs and configures the common applications on Debian, Elementary OS, Ubuntu, & OS X.
   company: your company (optional)
   license: BSD
-  min_ansible_version: 1.4.4
+  min_ansible_version: 1.9
   platforms:
   - name: Ubuntu
     versions:
     - trusty
     - utopic
     - vivid
+    - xenial
   - name: Debian
     versions:
     - wheezy
     - jessie
-  - name: elementary os
-    versions:
-    - Freya
-  - name: Darwin
-    versions:   
-    - Mavericks
-    - Yosemite 
   categories:
   - monitoring
   - system
 
 dependencies: []
-
-  
+...
