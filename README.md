@@ -13,7 +13,7 @@ Requirements
 ------------
 
 ```shell
-# Ansible version 1.8.4+
+# Ansible version 2.0.0.2+
 ansible --version
 
 # OS
