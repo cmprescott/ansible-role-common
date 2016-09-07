@@ -7,15 +7,14 @@
   with_items: [ 'unrar', 'git', 'netcat', 'wget', 'bash', 'byobu', 'tree', 'vim' ]
   when:  ansible_system == 'Darwin'
 
-
 - name: "setup  |   apt | ensure common packages present"
-  sudo: Yes
+  become: Yes
   apt: name="{{ item }}" update_cache=Yes cache_valid_time=86400
   with_items: [ 'unzip', 'unrar', 'curl', 'git', 'netcat', 'wget', 'bash', 'byobu', 'locate', 'sudo', 'tree', 'vim' ]
   when:  ansible_pkg_mgr == 'apt'
 
 - name: "setup  |   pkg | ensure common packages present"
-  sudo: Yes
+  become: Yes
   pkgng: name="{{ item }}" state=present
   with_items: [ 'unzip', 'unrar', 'curl', 'git', 'wget', 'bash', 'byobu', 'tree', 'vim-lite' ]
   when: ansible_pkg_mgr == 'pkgng'
@@ -24,39 +23,30 @@
 - name: "config |  bash | ensure ~/.bash_profile templated"
   template: src=bash/bash_profile.j2 dest=~/.bash_profile
 
-
 - name: "config |  bash | ensure ~/.bashrc templated"
   template: src=bash/bashrc.j2 dest=~/.bashrc
-
 
 - name: "config |  bash | ensure ~/.bash_aliases templated"
   template: src=bash/bash_aliases.j2 dest=~/.bash_aliases
 
-
 - name: "config |  bash | ensure no ~/.profile"
   file: path=~/.profile state=absent
-
 
 - name: "config |  bash | ensure my ~/.dircolors"
   copy: src=dircolors dest=~/.dircolors
   when: ansible_os_family == 'Debian'
 
-
 - name: "config | byobu | ensure .../share/byobu/status/status templated"
-  sudo: Yes
+  become: Yes
   template: src=byobu/status.j2 dest="{{ common_byobu_path_status[ansible_system] }}"
-
 
 - name: "config | byobu | ensure ~/.byobu/"
   file: path=~/.byobu/ state=directory
 
-
 - name: "config | byobu | ensure ~/.byobu/.tmux.conf templated"
   template: src=byobu/tmux.conf.j2 dest=~/.byobu/.tmux.conf
 
-
 - name: "config |   vim | ensure my ~/.vimrc"
   copy: src=vimrc dest=~/.vimrc
-
 
 ...
